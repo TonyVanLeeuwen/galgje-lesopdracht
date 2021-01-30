@@ -13,7 +13,12 @@ function game(word, guesses) {
       letter = letter.slice(0, 1);
     }
 
-    guesses.push(letter.toLowerCase());
+    if (guesses.includes(letter)){
+        console.log("Die had je al")
+        game(word, guesses)
+    } else {
+        guesses.push(letter.toLowerCase());
+    }
 
     if (!isGameLost(word, guesses) && !isGameWon(word, guesses)) {
         // volgende ronde! we roepen game nog een keer aan

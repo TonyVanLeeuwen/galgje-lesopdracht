@@ -55,7 +55,9 @@ function isGameLost(word, guesses) {
     }
 }
 
+function showGallows(word, guesses){
 
+}
 
 function showWrongLettersGuessedCount(word, guesses){
     let counter = 0
