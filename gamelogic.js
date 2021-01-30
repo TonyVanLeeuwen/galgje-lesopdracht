@@ -42,36 +42,99 @@ function isGameLost(word, guesses) {
     counter++
     if counter guesses.length is > 7 return true
   */
-    let counter = 0
+    let counter = 0;
     for (let i = 0; i < guesses.length; i++) {
-        if (!word.includes(guesses[i])){
-            counter++
+        if (!word.includes(guesses[i])) {
+            counter++;
         }
     }
-    if (counter >= 7){
+    if (counter >= 7) {
         return true;
     } else {
         return false;
     }
 }
 
-function showGallows(word, guesses){
-
+function showGallows(word, guesses) {
+    if (showWrongLettersGuessedCount(word, guesses) === 1) {
+        console.log(
+            "|\n" +
+            "|\n" +
+            "|\n" +
+            "|\n" +
+            "|\n" +
+            "===========");
+    } else if (showWrongLettersGuessedCount(word, guesses) === 2) {
+        console.log(
+            "___________\n" +
+            "| /\n" +
+            "|/\n" +
+            "|\n" +
+            "|\n" +
+            "|\n" +
+            "===========");
+    } else if (showWrongLettersGuessedCount(word, guesses) === 3) {
+        console.log(
+            "___________\n" +
+            "| /      |\n" +
+            "|/       o\n" +
+            "|\n" +
+            "|\n" +
+            "|\n" +
+            "===========");
+    } else if (showWrongLettersGuessedCount(word, guesses) === 4) {
+        console.log(
+            "___________\n" +
+            "| /      |\n" +
+            "|/      _o_\n" +
+            "|\n" +
+            "|\n" +
+            "|\n" +
+            "===========");
+    }  else if (showWrongLettersGuessedCount(word, guesses) === 5) {
+        console.log(
+            "___________\n" +
+            "| /      |\n" +
+            "|/      _o_\n" +
+            "|        0\n" +
+            "|\n" +
+            "|\n" +
+            "===========");
+    }   else if (showWrongLettersGuessedCount(word, guesses) === 6) {
+        console.log(
+            "___________\n" +
+            "| /      |\n" +
+            "|/      _o_\n" +
+            "|        0\n" +
+            "|       / \n" +
+            "|\n" +
+            "===========");
+    } else if (showWrongLettersGuessedCount(word, guesses) === 7) {
+        console.log(
+            "___________\n" +
+            "| /      |\n" +
+            "|/      _o_\n" +
+            "|        0\n" +
+            "|       / \\\n" +
+            "|\n" +
+            "===========");
+    }
 }
 
-function showWrongLettersGuessedCount(word, guesses){
-    let counter = 0
+function showWrongLettersGuessedCount(word, guesses) {
+    let counter = 0;
     for (let i = 0; i < guesses.length; i++) {
-        if (!word.includes(guesses[i])){
-            counter++
+        if (!word.includes(guesses[i])) {
+            counter++;
         }
     }
-    return counter
+    return counter;
 }
 
 module.exports = {
     displayWordSoFar: displayWordSoFar,
     isGameWon: isGameWon,
     isGameLost: isGameLost,
-    showWrongLetterCount : showWrongLettersGuessedCount,
+    showWrongLetterCount: showWrongLettersGuessedCount,
+    showGallows : showGallows,
 };

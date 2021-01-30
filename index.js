@@ -1,21 +1,22 @@
 const {question} = require("readline-sync");
-const {displayWordSoFar, isGameWon, isGameLost, showWrongLetterCount} = require("./gamelogic");
+const {displayWordSoFar, isGameWon, isGameLost, showWrongLetterCount, showGallows} = require("./gamelogic");
 
 function game(word, guesses) {
     console.log("Dit heb je tot nu toe geraden: ", guesses);
     console.log("Dit zijn de letters die je tot nu toe goed hebt: " + displayWordSoFar(word, guesses));
     console.log("Aantal verkeerd geraden letters: " + showWrongLetterCount(word, guesses));
+    showGallows(word, guesses);
 
     let letter = question("Raad een letter: ");
 
     // voeg de geraden letter toe aan de array met guesses
     if (letter.length > 1) {
-      letter = letter.slice(0, 1);
+        letter = letter.slice(0, 1);
     }
 
-    if (guesses.includes(letter)){
-        console.log("Die had je al")
-        game(word, guesses)
+    if (guesses.includes(letter)) {
+        console.log("Die had je al");
+        game(word, guesses);
     } else {
         guesses.push(letter.toLowerCase());
     }
@@ -29,6 +30,7 @@ function game(word, guesses) {
 
     } else if (isGameLost(word, guesses)) {
         //jammer de bammer
+        showGallows(word, guesses);
         console.log("Helaas, je hangt. Volgende keer beter!");
     }
 }
