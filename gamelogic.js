@@ -42,12 +42,16 @@ function isGameLost(word, guesses) {
     counter++
     if counter guesses.length is > 7 return true
   */
-    if (guesses.length < 7) {
-        return false;
+    let counter = 0
+    for (let i = 0; i < guesses.length; i++) {
+        if (!word.includes(guesses[i])){
+            counter++
+        }
     }
-
-    if (guesses.length >= 7){
+    if (counter >= 7){
         return true;
+    } else {
+        return false;
     }
 }
 
