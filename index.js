@@ -6,9 +6,13 @@ function game(word, guesses) {
     console.log("Dit zijn de letters die je tot nu toe goed hebt: " + displayWordSoFar(word, guesses));
     console.log("Aantal verkeerd geraden letters: " + showWrongLetterCount(word, guesses));
 
-    const letter = question("Raad een letter: ");
+    let letter = question("Raad een letter: ");
 
     // voeg de geraden letter toe aan de array met guesses
+    if (letter.length > 1) {
+      letter = letter.slice(0, 1);
+    }
+
     guesses.push(letter.toLowerCase());
 
     if (!isGameLost(word, guesses) && !isGameWon(word, guesses)) {

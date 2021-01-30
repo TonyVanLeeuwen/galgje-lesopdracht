@@ -57,7 +57,7 @@ function isGameLost(word, guesses) {
 
 
 
-function showWrongLetterCount(word, guesses){
+function showWrongLettersGuessedCount(word, guesses){
     let counter = 0
     for (let i = 0; i < guesses.length; i++) {
         if (!word.includes(guesses[i])){
@@ -71,5 +71,5 @@ module.exports = {
     displayWordSoFar: displayWordSoFar,
     isGameWon: isGameWon,
     isGameLost: isGameLost,
-    showWrongLetterCount : showWrongLetterCount,
+    showWrongLetterCount : showWrongLettersGuessedCount,
 };
