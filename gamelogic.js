@@ -2,7 +2,6 @@ function displayWordSoFar(word, guesses) {
     /*
       checken of de letter in het woord zit door middel van een for loop
       inhoud for loop:
-      nested loop die per letter checkt of en waar hij in het woord zit
       als er nog geen guesses zijn laat je voor de lengte van het woord een string met underscores zien
       als er wel guesses zijn laat je per geraden letter de letter in plaats van de underscores zien.
   */
@@ -19,23 +18,37 @@ function displayWordSoFar(word, guesses) {
 
 function isGameWon(word, guesses) {
     /*
-    checken of de letter in het woord zit door middel van een for loop
+    checken of de letter tussen guesses staat zit door middel van een for loop
     inhoud for loop:
-    voor de lengte van het woord een counter opzetten
-    if found counter++
-    if counter === word.length return true
+    voor iedere letter in het woord checken of het tussen de geraden letters staat
+    als de letter tussen de geraden letters staat ga je door met de loop, zo niet stop je met checken
+    als het einde van het woord is bereikt wordt er true teruggegeven
   */
+    for (let i = 0; i < word.length; i++) {
+        if (guesses.includes(word[i]) && i === word.length - 1) {
+            return true;
+        } else if (!guesses.includes(word[i])) {
+            return false;
+        }
+    }
 }
 
 function isGameLost(word, guesses) {
     /*
-    checken of de letter in het woord zit door middel van een for loop
-     inhoud for loop:
+    checken of de letter in de guesses zit door middel van een for loop
+    inhoud for loop:
     nested loop die per letter checkt of en waar hij in het woord zit
     voor de lengte van het woord een counter opzetten
-    if found counter++
-    if counter !== word.length && guesses.length is > 7 return true
+    counter++
+    if counter guesses.length is > 7 return true
   */
+    if (guesses.length < 7) {
+        return false;
+    }
+
+    if (guesses.length >= 7){
+        return true;
+    }
 }
 
 module.exports = {
