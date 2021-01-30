@@ -9,7 +9,6 @@ function game(word, guesses) {
 
     let letter = question("Raad een letter: ");
 
-    // voeg de geraden letter toe aan de array met guesses
     if (letter.length > 1) {
         letter = letter.slice(0, 1);
     }
@@ -22,14 +21,11 @@ function game(word, guesses) {
     }
 
     if (!isGameLost(word, guesses) && !isGameWon(word, guesses)) {
-        // volgende ronde! we roepen game nog een keer aan
         game(word, guesses);
     } else if (isGameWon(word, guesses)) {
-        //winst! lekker gewerkt pik
         console.log("Inderdaad! het woord was " + word + "! gefeliciteerd! je hebt gewonnen!");
 
     } else if (isGameLost(word, guesses)) {
-        //jammer de bammer
         showGallows(word, guesses);
         console.log("Helaas, je hangt. Volgende keer beter!");
     }
